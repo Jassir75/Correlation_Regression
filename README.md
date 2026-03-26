@@ -1,10 +1,4 @@
-DATE:26-10-2024
-EXPNO: 03
-NAME : R RAIHAAN AHMED 
-REF NO: 24010543
-
-# EXP 3: Correlation and regression for data analysis
-
+# Correlation and regression for data analysis
 # Aim : 
 
 To analyse given data using coeffificient of correlation and regression line
@@ -26,49 +20,55 @@ If y represents the dependent variable and x the independent variable, this rela
 ![image](https://user-images.githubusercontent.com/104613195/168225866-ac8f6610-bdc3-4ac2-a24e-2b24ba08e189.png)
 
 # Program :
-```py
-Developed by : R Raihaan Ahmed
-Register number : 24010543
+
+```python
+ Developed By :JASSIR SULTHAN K
+Reg.No: 212224240060
 import numpy as np
-import math
 import matplotlib.pyplot as plt
-x=[ int(i) for i in input().split()]
-y=[ int(i) for i in input().split()]
-N=len(x)
-Sx=0
-Sy=0
-Sxy=0
-Sx2=0
-Sy2=0
-for i in range(0,N):
-    Sx=Sx+x[i]
-    Sy=Sy+y[i]
-    Sxy=Sxy+x[i]*y[i]
-    Sx2=Sx2+x[i]**2
-    Sy2=Sy2+y[i]**2
-r=(N*Sxy-Sx*Sy)/(math.sqrt(N*Sx2-Sx**2)*math.sqrt(N*Sy2-Sy**2))
-print("The Correlation coefficient is %0.3f"%r)
-byx=(N*Sxy-Sx*Sy)/(N*Sx2-Sx**2)
-xmean=Sx/N
-ymean=Sy/N
-print("The Regression line Y on X is ::: y = %0.3f + %0.3f (x-%0.3f)"%(ymean,byx,xmean))
-plt.scatter(x,y)
-def Reg(x):
-  return ymean + byx*(x-xmean)
-x=np.linspace(20,80,51)
-y1=Reg(x)
-plt.plot(x,y1,'r')
-plt.xlabel('x-data')
-plt.ylabel('y-data')
-plt.legend(['Regression Line','Data points'])
 
+print("Enter the values of X separated by space")
+X = np.array([int(i) for i in input().split()])
+
+print("Enter the values of Y separated by space")
+Y = np.array([int(i) for i in input().split()])
+
+N = len(X)
+print(X, Y, N, sep='\n')
+
+SumX = np.sum(X)
+SumY = np.sum(Y)
+SumX2 = np.sum(X**2)
+SumY2 = np.sum(Y**2)
+SumXY = np.sum(X * Y)
+
+MeanX = SumX / N
+MeanY = SumY / N
+
+num = (N * SumXY) - (SumX * SumY)
+den = (N * SumX2) - (SumX**2)
+RegressionCoef = num / den
+
+print(f"The Regression Y on X is Y = {RegressionCoef:.3f} ( X - {MeanX:.3f}) + {MeanY:.3f}")
+
+def Regression(x):
+    return MeanY + (RegressionCoef * (x - MeanX))
+
+plt.scatter(X, Y)
+plt.plot(X, Regression(X))
+plt.xlabel("X-Data")
+plt.ylabel("Y-Data")
+plt.legend(['Data points', 'Regression Line'])
+plt.show()
 ```
-# Output 
 
-![280448207-9a1fb86e-4117-4109-8756-07498ba15885](https://github.com/PriyankaAnnadurai/Correlation_Regression/assets/118351569/79cf2734-4776-405b-ae0b-b645f23f97c4)
+
+
+# Output 
+<img width="1002" height="727" alt="image" src="https://github.com/user-attachments/assets/87938020-c6d0-41c7-9c34-36a3bbbf3ec3" />
 
 # Result
 
-The Correlation and regression for data analysis of objects from feeder using probability distribution are calculated.
+The Result got succesfully.
 
-
+GITHUB LINK: https://github.com/Jassir75/Correlation_Regression
